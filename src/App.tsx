@@ -15,7 +15,8 @@ import {
   ArrowRight,
   Check,
   Quote,
-  Calendar
+  Calendar,
+  Home
 } from 'lucide-react';
 
 // Initialize Supabase client
@@ -46,54 +47,58 @@ function App() {
     }
   }, [darkMode]);
 
-  const services = [
-    {
-      icon: Shield,
-      title: "Ceramic Coating",
-      description: "Ultimate protection with our premium ceramic coating technology",
-      features: ["9H Hardness", "5-Year Warranty", "Hydrophobic Properties", "UV Protection"],
-      price: "From ₹ 3k to 5k"
-    },
-    {
-      icon: Sparkles,
-      title: "Car Polishing",
-      description: "Professional paint correction and polishing for showroom finish",
-      features: ["Paint Correction", "Swirl Removal", "Scratch Removal", "Mirror Finish"],
-      price: "From ₹30k to 50k"
-    },
-    {
-      icon: Star,
-      title: "Wax Polish",
-      description: "Premium carnauba wax application for deep gloss and protection",
-      features: ["Carnauba Wax", "6-Month Protection", "Deep Gloss", "Water Beading"],
-      price: "From ₹999"
-    },
-    {
-      icon: Car,
-      title: "All-in-One Polish",
-      description: "Complete detailing package for the ultimate car care experience",
-      features: ["Full Exterior Detail", "Interior Clean", "Tire Shine", "Glass Treatment"],
-      price: "From ₹1999"
-    }
-  ];
+ const services = [
+  {
+    imageUrl: '/ser1.jpg',
+    icon: Shield,
+    title: "Ceramic Coating",
+    description: "Ultimate protection with our premium ceramic coating technology",
+    features: ["9H Hardness", "5-Year Warranty", "Hydrophobic Properties", "UV Protection"],
+    price: "From ₹ 30k to 50k"
+  },
+  {
+    imageUrl: '/ser3.jpg',
+    icon: Sparkles,
+    title: "Car Polishing",
+    description: "Professional paint correction and polishing for showroom finish",
+    features: ["Paint Correction", "Scratch Removal", "Mirror Finish", "3k only for outside"],
+    price: "From ₹ 3k to 5k "
+  },
+  {
+    imageUrl: '/ser2.jpg',
+    icon: Star,
+    title: "Wax Polish",
+    description: "Premium carnauba wax application for deep gloss and protection",
+    features: ["Carnauba Wax", "6-Month Protection", "Deep Gloss", "Water Beading"],
+    price: "From ₹ 999"
+  },
+  {
+    imageUrl: '/ser4.jpg',
+    icon: Car,
+    title: "All-in-One Polish",
+    description: "Complete detailing package for the ultimate car care experience",
+    features: ["Full Exterior Detail", "Interior Clean", "Tire Shine", "Glass Treatment"],
+    price: "From ₹ 5k"
+  }
+];
 
   const testimonials = [
     {
-      name: "Michael Johnson",
+      name: "Vikram Singh",
       rating: 5,
-      text: "Absolutely incredible work! My BMW looks better than when I first bought it. The ceramic coating is phenomenal.",
+      text: "My car looks brand new after the ceramic coating! The attention to detail is truly impressive.",
       service: "Ceramic Coating"
     },
     {
-      name: "Sarah Chen",
-      rating: 5,
-      text: "Professional service and attention to detail is unmatched. They transformed my car completely!",
+      name: "Harini Devi",
+      rating: 4,
+      text: "Exceptional service! My vehicle was transformed, and the team was very professional.",
       service: "Full Detail Package"
     },
     {
-      name: "David Rodriguez",
-      rating: 5,
-      text: "Best investment I've made for my car. The protection and shine are incredible. Highly recommend!",
+      name: "Mohan Kumar",
+      rating: 4,
+      text: "Highly recommend their paint correction service. My car's finish is flawless now!",
       service: "Paint Correction"
     }
   ];
@@ -114,7 +119,8 @@ function App() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
                 <img src="/logo.png" alt="Logo" className="w-8 h-8 rounded-full border" />
-                <span className="font-bold text-xl text-gray-900 dark:text-white border-r-4 pr-2">BMShinehub</span>
+                 <span className="font-bold text-xl text-gray-900 dark:text-white">BMShinehub</span>
+
             </div>
 
             {/* Desktop Navigation */}
@@ -257,8 +263,14 @@ function App() {
                 className="group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl cursor-pointer border border-gray-200 dark:border-gray-600"
                 onClick={() => setActiveService(index)}
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl flex items-center justify-center mb-6 group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className="relative w-full h-48 mb-6 overflow-hidden rounded-xl">
+                  <img
+                    src={service.imageUrl}
+                    alt={service.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">{service.description}</p>
@@ -290,13 +302,24 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
+
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
-                <Shield className="w-10 h-10 text-white" />
+                <Car className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Premium Protection</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Free Pick and Drop Service</h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                We use only the highest quality products and techniques to ensure your vehicle receives the ultimate protection and care it deserves.
+                Enjoy the convenience of our complimentary pick-up and drop-off service for your vehicle.
+              </p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
+                <Home className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Doorstep Service</h3>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                We bring our premium detailing services right to your doorstep for ultimate convenience.
               </p>
             </div>
 
@@ -310,15 +333,7 @@ function App() {
               </p>
             </div>
 
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
-                <Sparkles className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Satisfaction Guaranteed</h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                We stand behind our work with a satisfaction guarantee. If you're not completely happy, we'll make it right.
-              </p>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -533,7 +548,7 @@ function App() {
                 </li>
                 <li className="flex justify-between">
                   <span>Sunday</span>
-                  <span>Closed</span>
+                  <span>8:00 AM - 4:00 PM</span>
                 </li>
               </ul>
             </div>
