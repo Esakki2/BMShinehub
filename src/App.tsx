@@ -34,6 +34,7 @@ function App() {
     fullName: '',
     phoneNumber: '',
     email: '',
+    address: '',
     vehicle: '',
     service: '',
   });
@@ -59,10 +60,10 @@ function App() {
   {
     imageUrl: '/ser3.jpg',
     icon: Sparkles,
-    title: "Car Polishing",
+    title: "Rabing Car Polishing",
     description: "Professional paint correction and polishing for showroom finish",
     features: ["Paint Correction", "Scratch Removal", "Mirror Finish", "3k only for outside"],
-    price: "From ₹ 3k to 5k "
+    price: "From ₹ 3k "
   },
   {
     imageUrl: '/ser2.jpg',
@@ -78,7 +79,7 @@ function App() {
     title: "All-in-One Polish",
     description: "Complete detailing package for the ultimate car care experience",
     features: ["Full Exterior Detail", "Interior Clean", "Tire Shine", "Glass Treatment"],
-    price: "From ₹ 5k"
+    price: "From ₹ 5k to 6k"
   }
 ];
 
@@ -393,9 +394,10 @@ function App() {
                     phone: formData.phoneNumber,
                     email: formData.email,
                     vehicle: formData.vehicle,
-                    service: formData.service,
-                    created_at: new Date().toISOString()
-                  }]);
+                    address: formData.address,
+                  service: formData.service,
+                  created_at: new Date().toISOString()
+                }]);
                 
                 if (error) throw error;
                 
@@ -404,6 +406,7 @@ function App() {
                   fullName: '',
                   phoneNumber: '',
                   email: '',
+                  address: '',
                   vehicle: '',
                   service: ''
                 });
@@ -447,6 +450,17 @@ function App() {
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-white font-medium mb-2">Address</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                  placeholder="Your address"
+                  value={formData.address}
+                  onChange={(e) => setFormData({...formData, address: e.target.value})}
                   required
                 />
               </div>

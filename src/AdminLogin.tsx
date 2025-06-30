@@ -45,7 +45,8 @@ const AdminLogin: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
         <img src="/logo.png" alt="Logo" className="mx-auto mb-6 rounded-full w-24 h-24 object-cover" />
-        <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">Admin Login</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">BMShinehub</h2>
+        <h2 className="text-1xl font-bold text-center text-gray-900 dark:text-white mb-5">Admin Login</h2>
        
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
